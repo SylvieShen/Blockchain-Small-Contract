@@ -1,0 +1,22 @@
+pragma solidity ^0.5.0;
+
+import "./ERC20.sol";
+import "./ERC20Mintable.sol";
+import "./ERC20Detailed.sol";
+import "./ERC20Burnable.sol";
+
+contract MyERC20Token is ERC20, ERC20Mintable, ERC20Detailed, ERC20Burnable {
+    constructor(
+        string memory name,
+        string memory symbol,
+        uint8 decimals
+    )
+        ERC20Burnable()
+        ERC20Mintable()
+        ERC20Detailed(name, symbol, decimals)
+        ERC20()
+        public
+    {
+         _mint(msg.sender, 10000 * (10 ** uint256(decimals)));
+    }
+}
